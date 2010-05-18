@@ -1,0 +1,35 @@
+/**
+ * Deco Grid System for SASS3 by Asko Soukka <asko.soukka@iki.fi>
+ * For originals by Alexander Limi, see http://deco.gs/
+ *
+ * Deco Grid System is Public Domain.
+ */
+
+$deco-grid-width:   960px !default;
+$deco-column-count: 16    !default;
+$deco-margin-width: 20px  !default;
+$deco-cell-width: ($deco-grid-width - $deco-margin-width * ($deco-column-count - 1)) / $deco-column-count;
+
+@mixin deco-gs($width: $deco-grid-width, $columns: $deco-column-count, $margin: $deco-margin-width) {
+    $deco-grid-width:   $width;
+    $deco-column-count: $columns;
+    $deco-margin-width: $margin;
+    $deco-cell-width: ($deco-grid-width - $deco-margin-width * ($deco-column-count - 1)) / $deco-column-count;
+}
+
+@mixin deco-row {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+@mixin deco-cell($position: 0, $width: 16, $padding-left: 0, $padding-right: 0) {
+    float: left;
+    position: relative;
+    left: 100%;
+
+    width: percentage(($deco-cell-width * $width + $deco-margin-width * ($width - 1) - $padding-right - $padding-left) / $deco-grid-width);
+    margin-left: -100% + percentage(($deco-cell-width * $position + $deco-margin-width * $position) / $deco-grid-width);
+    @if $padding-left != 0 { padding-left: percentage($padding-left / $deco-grid-width); }
+    @if $padding-right != 0 { padding-right: percentage($padding-right / $deco-grid-width); }
+}

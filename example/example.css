@@ -1,0 +1,42 @@
+/**
+ * Deco Grid System for SASS3 by Asko Soukka <asko.soukka@iki.fi>
+ * For originals by Alexander Limi, see http://deco.gs/
+ *
+ * Deco Grid System is Public Domain.
+ */
+body {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto; }
+  body #header {
+    float: left;
+    position: relative;
+    width: 100%; }
+  body #main {
+    float: left;
+    position: relative;
+    width: 100%; }
+    body #main #body {
+      float: left;
+      position: relative;
+      left: 100%;
+      width: 62.109%;
+      margin-left: -100%;
+      margin-top: 10px;
+      height: 100%; }
+    body #main #sidebar {
+      float: left;
+      position: relative;
+      left: 100%;
+      width: 36.849%;
+      margin-left: -36.849%; }
+      body #main #sidebar .content {
+        margin-top: 10px; }
+  body #footer {
+    float: left;
+    position: relative;
+    width: 100%;
+    margin-top: 10px; }
+  body .content {
+    border: 1px solid black;
+    min-height: 50px; }
