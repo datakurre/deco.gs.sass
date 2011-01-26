@@ -1,0 +1,50 @@
+@import "../deco-gs";
+
+@include deco-grid(960px, 12, 0px, true);
+
+div.row {
+  @include deco-row;
+}
+
+div.cell {
+  @include deco-cell;
+}
+
+@for $i from 1 through $deco-column-count {
+  div.width-#{$i} { @include deco-width($i, 10px, 10px); }
+}
+
+@for $i from 0 through ($deco-column-count - 1) {
+  div.position-#{$i} { @include deco-position($i); }
+}
+
+/* End of the core Deco Grid System */
+
+/* Convenience classes — ¼, ½, ¾ widths and ¼, ½, ¾ positions. 
+   Not strictly necessary. */
+/* .width-1:2 */
+div.width-1\3a 2 { @include deco-width($deco-column-count * (1/2), 10px, 10px); }
+/* .width-1:4 */
+div.width-1\3a 4 { @include deco-width($deco-column-count * (1/4), 10px, 10px); }
+/* .width-3:4 */
+div.width-3\3a 4 { @include deco-width($deco-column-count * (3/4), 10px, 10px); }
+/* .position-1:4 */
+div.position-1\3a 4 { @include deco-position($deco-column-count * (1/4)); }
+/* .position-1:2 */
+div.position-1\3a 2 { @include deco-position($deco-column-count * (1/2)); }
+/* .position-3:4 */
+div.position-3\3a 4 { @include deco-position($deco-column-count * (3/4)); }
+
+/* Special classes for ⅓, ⅔ widths and ⅓, ⅔ positions. */
+/* .width-1:3 */
+div.width-1\3a 3 { @include deco-width($deco-column-count * (1/3), 10px, 10px); }
+/* .width-2:3 */
+div.width-2\3a 3 { @include deco-width($deco-column-count * (2/3), 10px, 10px); }
+/* .position-1:3 */
+div.position-1\3a 3 { @include deco-position($deco-column-count * (1/3)); }
+/* .position-2:3 */
+div.position-2\3a 3 { @include deco-position($deco-column-count * (2/3)); }
+
+/* Full/leftmost are useful synonyms for full width and leftmost positioning */
+div.position-leftmost { @include deco-position(0); }
+div.width-full { @include deco-width($deco-column-count, 10px, 10px); }
