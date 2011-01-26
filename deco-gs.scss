@@ -74,6 +74,7 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
 // that have padding (which is reduced from their cell width).
 //
 @mixin deco-width($width: 16, $padding-left: 0, $padding-right: 0) {
+  // Note: ceil(100000 * $width) * 0.00001 rounds up to the next 0.001%
   @if $deco-uttermost-margins {
       width: percentage(ceil(100000 *
           (($deco-cell-width * $width + 2
@@ -100,6 +101,7 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
 // Example: div.position-0 { @include deco-width(0); }
 //
 @mixin deco-position($position: 0) {
+  // Note: ceil(100000 * $width) * 0.00001 rounds up to the next 0.001%
   @if $deco-uttermost-margins {
       margin-left: -100% + percentage(ceil(100000 *
           (($deco-cell-width * $position
@@ -126,7 +128,7 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
     float: left;
     position: relative;
     left: 100%;
-    // Allow special cell classes to be defined with a single mixin call:
+    // Note: allow special cell classes to be defined with a single mixin call
     @if $position > -1 {
         @include deco-position($position);
     }
