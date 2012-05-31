@@ -1,3 +1,6 @@
+/* The $columns-column Deco Grid System. 
+ * Available in multiple variants, see http://deco.gs
+ */
 div.row {
   float: left;
   position: relative;
@@ -9,6 +12,9 @@ div.cell {
   position: relative;
   left: 100%; }
 
+/* Width classes. 
+   For a given cell width, the calculation is: 
+   width = (total cell width) * n - (margin*2) */
 div.width-1 {
   width: 6.25%;
   padding-left: 1.042%;
@@ -69,6 +75,10 @@ div.width-12 {
   padding-left: 1.042%;
   padding-right: 1.042%; }
 
+/* Positioning classes, these are subtracting from a rightmost 
+   position, which is why they seem the wrong way around */
+/* For a given position, the calculation is:
+   -100 + (total cell width * n)*/
 div.position-0 {
   margin-left: -100%; }
 

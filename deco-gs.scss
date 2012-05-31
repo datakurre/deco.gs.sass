@@ -145,11 +145,11 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
 // Notes: The embedded comments are from the original
 // deco-gs, written by Alexander Limi.
 //
-@mixin deco-gs($columns: $deco-column-count) {
+@mixin deco-gs($columns: $deco-column-count, $margin: 10px, $padding: 0) {
   /* The $columns-column Deco Grid System. 
    * Available in multiple variants, see http://deco.gs
    */
-  @include deco-grid(960px, $columns, 10px, true);
+  @include deco-grid(960px, $columns, $margin, true);
 
   div.row {
     @include deco-row;
@@ -163,7 +163,7 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
      For a given cell width, the calculation is: 
      width = (total cell width) * n - (margin*2) */
   @for $i from 1 through $deco-column-count {
-    div.width-#{$i} { @include deco-width($i); }
+    div.width-#{$i} { @include deco-width($i, $padding, $padding); }
   }
 
   /* Positioning classes, these are subtracting from a rightmost 
@@ -179,11 +179,11 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
   /* Convenience classes — ¼, ½, ¾ widths and ¼, ½, ¾ positions. 
      Not strictly necessary. */
   /* .width-1:2 */
-  div.width-1\3a 2 { @include deco-width($deco-column-count * (1/2)); }
+  div.width-1\3a 2 { @include deco-width($deco-column-count * (1/2), $padding, $padding); }
   /* .width-1:4 */
-  div.width-1\3a 4 { @include deco-width($deco-column-count * (1/4)); }
+  div.width-1\3a 4 { @include deco-width($deco-column-count * (1/4), $padding, $padding); }
   /* .width-3:4 */
-  div.width-3\3a 4 { @include deco-width($deco-column-count * (3/4)); }
+  div.width-3\3a 4 { @include deco-width($deco-column-count * (3/4), $padding, $padding); }
   /* .position-1:4 */
   div.position-1\3a 4 { @include deco-position($deco-column-count * (1/4)); }
   /* .position-1:2 */
@@ -193,9 +193,9 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
 
   /* Special classes for ⅓, ⅔ widths and ⅓, ⅔ positions. */
   /* .width-1:3 */
-  div.width-1\3a 3 { @include deco-width($deco-column-count * (1/3)); }
+  div.width-1\3a 3 { @include deco-width($deco-column-count * (1/3), $padding, $padding); }
   /* .width-2:3 */
-  div.width-2\3a 3 { @include deco-width($deco-column-count * (2/3)); }
+  div.width-2\3a 3 { @include deco-width($deco-column-count * (2/3), $padding, $padding); }
   /* .position-1:3 */
   div.position-1\3a 3 { @include deco-position($deco-column-count * (1/3)); }
   /* .position-2:3 */
@@ -203,5 +203,5 @@ $deco-cell-width: ($deco-grid-width - $deco-margin-width
 
   /* Full/leftmost are useful synonyms for full width and leftmost positioning */
   div.position-leftmost { @include deco-position(0); }
-  div.width-full { @include deco-width($deco-column-count); }
+  div.width-full { @include deco-width($deco-column-count, $padding, $padding); }
 }
